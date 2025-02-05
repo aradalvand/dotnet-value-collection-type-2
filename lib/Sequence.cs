@@ -18,7 +18,10 @@ namespace Avesta.Common;
 [DebuggerTypeProxy(typeof(Sequence<>.DebugView))]
 [CollectionBuilder(typeof(Sequence), nameof(Sequence.Create))]
 [MessagePackFormatter(typeof(SequenceMessagePackFormatter<>))]
-public sealed class Sequence<T> : IImmutableList<T>, IEquatable<Sequence<T>>, IEqualityOperators<Sequence<T>, Sequence<T>, bool>, IReadOnlyList<T>
+public sealed class Sequence<T> :
+    IImmutableList<T>,
+    IEquatable<Sequence<T>>,
+    IReadOnlyList<T>
     where T : IEquatable<T>
 {
     /// <summary>
