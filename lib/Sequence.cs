@@ -21,6 +21,9 @@ namespace Avesta.Common;
 public sealed class Sequence<T> :
     IImmutableList<T>,
     IEquatable<Sequence<T>>,
+#if NET7_0_OR_GREATER
+    IEqualityOperators<Sequence<T>, Sequence<T>, bool>,
+#endif
     IReadOnlyList<T>
     where T : IEquatable<T>
 {
@@ -116,10 +119,6 @@ public sealed class Sequence<T> :
         void IEnumerator.Reset() => throw new NotImplementedException();
         readonly void IDisposable.Dispose() { }
     }
-
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    internal static Sequence<T> UnsafeCreateFromArray(T[] values)
-        => new([.. values]);
 
     public override string ToString() =>
         $"({_values.Length}) [{string.Join(", ", _values)}]";

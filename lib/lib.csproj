@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- NOTE: This project is always going to target two framework versions: .NET Standard 2.0 since that's the required target framework for source generator/analyzer projects, and .NET 8,9.10... whatever version we're using for `Avesta.Core` at a given time -->
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net9.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -10,10 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="MessagePack" Version="2.5.192" />
-    <PackageReference Include="System.Collections.Immutable" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.1" />
     <PackageReference Include="PolySharp" Version="1.14.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
